@@ -1,0 +1,86 @@
+---
+title: "Ej30_10_24"
+author: "Julie"
+date: "2024-10-30"
+output: html_document
+---
+# Ejercicios #
+Esto es perteneciente al S12 
+
+*Ejercicio 1*
+Crea una lista que contenga al menos cuatro tipos diferentes de datos (incluyendo al menos un vector, una matriz, y un data frame). Luego, escribe código para acceder a cada uno de estos elementos por su índice.
+
+
+```{r}
+lista1 <- list (
+  num = 33,
+  vector = c(30, 31, 32), 
+  m1 = matrix (c(1, 2, 3, 4, 5, 6), nrow = 2, ncol= 6 ),
+  data_frame = data.frame(nombre = c("Antes", "Después", "Mientras"), estado = c("bueno", "malo", "intermedio"))
+)
+
+lista1
+
+# Acceder a cada elemento 
+lista1[[1]] #al número 
+lista1[[2]] # al vector 
+lista1[[3]] #a la matriz
+lista1[[4]] #al data.frame
+
+```
+
+*Ejercicio 2*
+Añade un nuevo elemento a la compleja_lista que sea otra lista conteniendo información relevante a un experimento microbiológico (p.ej., fechas, resultados de crecimiento, tipo de medio de cultivo). Accede a un elemento específico dentro de esta lista anidada.
+
+
+
+```{r}
+comp_list <- list (
+  numero = 42,
+  vector = c(1, 2, 3), 
+  matriz = matrix(c(1, 2, 3, 4), nrow = 2),
+  data_frame = data.frame(nombre = c("E. coli", "S. aureus"), gram = c("+", "-")), 
+  list (medio = "McConkey", growth = "regular"), 
+  list (medio = "PDA", growth = "good")
+)
+#esto si se edita el código
+comp_list
+
+new <- matrix (c(1:10), nrow = 5, ncol =2)
+append (comp_list, new)
+
+```
+
+*Ejercicio 6*
+Almacena datos de producción en experimentos de fermentación.
+
+* Crea una lista fermentacion con 4 elementos, cada uno representando un experimento de fermentación.
+* Cada elemento debe ser una lista con: Cepa, Condición, ProducciónEtanol.
+* Encuentra la condición con la mayor producción de etanol.
+
+
+```{r}
+ferment <- list (
+  list (cepa = 1, cond = "buena", prod_et = 0.7),
+  list (cepa = 2, cond = "regular", prod_et = 0.5), 
+  list (cepa = 3, cond = "mala", prod_et = 0.2), 
+  list (cepa = 4, cond = "regular", prod_et = 0.9)
+)
+
+# Condición con mayor producción 
+# Por lógica, sé que la cepa 4 es la mayor productora
+
+if (ferment[[1]]$prod_et > (any (ferment$prod_et))) {
+  print ("Cepa ", ferment[[1]]$cepa, "es la mayor productora con", ferment[[1]]$prod_et, "y una condición", ferment[[1]]$cond)
+} else if (ferment[[2]]$prod_et >= (any (ferment$prod_et))) {
+  print ("Cepa ", ferment[[2]]$cepa, "es la mayor productora con", ferment[[2]]$prod_et, "y una condición", ferment[[2]]$cond)
+} else if (ferment[[3]]$prod_et > (any (ferment$prod_et))) {
+  print ("Cepa ", ferment[[3]]$cepa, "es la mayor productora con", ferment[[3]]$prod_et, "y una condición", ferment[[3]]$cond)
+} else if (ferment[[4]]$prod_et > (any (ferment$prod_et))) {
+  print ("Cepa ", ferment[[4]]$cepa, "es la mayor productora con", ferment[[4]]$prod_et, "y una condición", ferment[[4]]$cond)
+}
+#este código no corre, indica que hay argumentos inv+alidos 
+
+```
+
+
